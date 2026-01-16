@@ -1,0 +1,82 @@
+{
+  "id": "timestamp-settings",
+  "version": "1.0.0",
+  "name": "Timestamp Generator",
+  "description": "Configure default timezone and format settings for new users",
+  "icon": "🕐",
+  "scope": "global",
+
+  "sections": [
+    {
+      "id": "defaults",
+      "name": "User Defaults",
+      "description": "Default settings for new users",
+      "icon": "⚙️",
+      "order": 1
+    },
+    {
+      "id": "behavior",
+      "name": "Behavior",
+      "description": "Configure module behavior",
+      "icon": "🔧",
+      "order": 2
+    }
+  ],
+
+  "settings": {
+    "defaultUtcOffset": {
+      "type": "number",
+      "default": 0,
+      "label": "Default UTC Offset",
+      "description": "Default timezone offset in hours for new users (-12 to +14)",
+      "section": "defaults",
+      "order": 1,
+      "validation": {
+        "required": true,
+        "min": -12,
+        "max": 14,
+        "absoluteMin": -12,
+        "absoluteMax": 14
+      }
+    },
+    "defaultMinuteModifier": {
+      "type": "select",
+      "default": "0",
+      "label": "Default Minute Modifier",
+      "description": "Additional minutes for half-hour timezones",
+      "section": "defaults",
+      "order": 2,
+      "options": [
+        { "value": "0", "label": ":00", "description": "No additional minutes" },
+        { "value": "15", "label": ":15", "description": "15 minute offset" },
+        { "value": "30", "label": ":30", "description": "30 minute offset (half-hour zones)" },
+        { "value": "45", "label": ":45", "description": "45 minute offset" }
+      ]
+    },
+    "defaultFormat": {
+      "type": "select",
+      "default": "f",
+      "label": "Default Format",
+      "description": "Default timestamp format for new users",
+      "section": "defaults",
+      "order": 3,
+      "options": [
+        { "value": "t", "label": "Short Time", "description": "16:20" },
+        { "value": "T", "label": "Long Time", "description": "16:20:30" },
+        { "value": "d", "label": "Short Date", "description": "20/04/2021" },
+        { "value": "D", "label": "Long Date", "description": "20 April 2021" },
+        { "value": "f", "label": "Date + Time", "description": "20 April 2021 16:20" },
+        { "value": "F", "label": "Full", "description": "Tuesday, 20 April 2021 16:20" },
+        { "value": "R", "label": "Relative", "description": "2 months ago" }
+      ]
+    },
+    "showSetupPrompt": {
+      "type": "boolean",
+      "default": true,
+      "label": "Show Setup Prompt",
+      "description": "Prompt new users to configure their timezone on first use",
+      "section": "behavior",
+      "order": 1
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "id": "giveaway-settings",
+  "version": "1.0.0",
+  "name": "Giveaway System",
+  "description": "Configure giveaway display, colors, and button labels",
+  "icon": "🎉",
+  "scope": "both",
+
+  "sections": [
+    {
+      "id": "display",
+      "name": "Display",
+      "description": "Configure list view and display options",
+      "icon": "📋",
+      "order": 1
+    },
+    {
+      "id": "colors",
+      "name": "Colors",
+      "description": "Customize panel and embed colors",
+      "icon": "🎨",
+      "order": 2
+    },
+    {
+      "id": "labels",
+      "name": "Labels",
+      "description": "Customize button text and labels",
+      "icon": "🏷️",
+      "order": 3
+    }
+  ],
+
+  "settings": {
+    "itemsPerPage": {
+      "type": "number",
+      "default": 8,
+      "label": "Items Per Page",
+      "description": "Number of giveaways to display per page in list view",
+      "section": "display",
+      "order": 1,
+      "validation": {
+        "required": true,
+        "min": 1,
+        "max": 10,
+        "absoluteMin": 1
+      }
+    },
+    "nameDisplayCap": {
+      "type": "number",
+      "default": 25,
+      "label": "Name Display Cap",
+      "description": "Maximum characters for giveaway names before truncation",
+      "section": "display",
+      "order": 2,
+      "validation": {
+        "required": true,
+        "min": 10,
+        "max": 100,
+        "absoluteMin": 1
+      }
+    },
+    "colorCreatePanel": {
+      "type": "color",
+      "default": "0x5865F2",
+      "label": "Create Panel Color",
+      "description": "Color for create giveaway panel",
+      "section": "colors",
+      "order": 1
+    },
+    "colorListPanel": {
+      "type": "color",
+      "default": "0x1ABC9C",
+      "label": "List Panel Color",
+      "description": "Color for giveaway list panel",
+      "section": "colors",
+      "order": 2
+    },
+    "colorMainPanel": {
+      "type": "color",
+      "default": "0x5865F2",
+      "label": "Main Panel Color",
+      "description": "Color for main giveaway panel",
+      "section": "colors",
+      "order": 3
+    },
+    "colorDetailActive": {
+      "type": "color",
+      "default": "0x2ECC71",
+      "label": "Active Detail Color",
+      "description": "Color for active giveaway details",
+      "section": "colors",
+      "order": 4
+    },
+    "colorDetailEnded": {
+      "type": "color",
+      "default": "0xF39C12",
+      "label": "Ended Detail Color",
+      "description": "Color for ended giveaway details",
+      "section": "colors",
+      "order": 5
+    },
+    "colorDetailCancelled": {
+      "type": "color",
+      "default": "0xE91E63",
+      "label": "Cancelled Detail Color",
+      "description": "Color for cancelled giveaway details",
+      "section": "colors",
+      "order": 6
+    },
+    "colorActiveGiveaway": {
+      "type": "color",
+      "default": "0x2ECC71",
+      "label": "Active Announcement Color",
+      "description": "Color for active giveaway announcements",
+      "section": "colors",
+      "order": 7
+    },
+    "labelEnterButton": {
+      "type": "string",
+      "default": "🎉 Enter Giveaway",
+      "label": "Enter Button Label",
+      "description": "Text shown on the enter button for button-mode giveaways",
+      "section": "labels",
+      "order": 1,
+      "validation": {
+        "required": true,
+        "minLength": 1,
+        "maxLength": 80
+      }
+    },
+    "labelTriviaButton": {
+      "type": "string",
+      "default": "✏️ Answer Trivia",
+      "label": "Trivia Button Label",
+      "description": "Text shown on the answer button for trivia-mode giveaways",
+      "section": "labels",
+      "order": 2,
+      "validation": {
+        "required": true,
+        "minLength": 1,
+        "maxLength": 80
+      }
+    }
+  }
+}

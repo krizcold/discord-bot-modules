@@ -1,0 +1,44 @@
+{
+  "name": "halloffame",
+  "version": "1.0.0",
+  "displayName": "Hall of Fame",
+  "description": "Feature popular messages based on reactions - create multiple boards with unique emojis",
+  "author": "kriz_cold",
+  "category": "fun",
+  "requiredIntents": ["Guilds", "GuildMessages", "GuildMessageReactions", "MessageContent"],
+  "requiredPermissions": ["ManageMessages", "SendMessages", "EmbedLinks", "AddReactions"],
+  "dependencies": {
+    "required": {},
+    "optional": {}
+  },
+  "dataSchema": {
+    "files": [
+      {
+        "id": "boards.json",
+        "name": "Board Configurations",
+        "description": "Stores board settings including emoji, channels, and thresholds",
+        "required": true,
+        "scope": "guild",
+        "template": []
+      },
+      {
+        "id": "featured.json",
+        "name": "Featured Messages",
+        "description": "Tracks currently featured messages and their metadata",
+        "required": true,
+        "scope": "guild",
+        "template": []
+      },
+      {
+        "id": "history.json",
+        "name": "Feature History",
+        "description": "Historical record of all featured messages for stats",
+        "required": false,
+        "scope": "guild",
+        "template": []
+      }
+    ]
+  },
+  "enabled": true,
+  "exports": {}
+}

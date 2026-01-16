@@ -1,0 +1,32 @@
+{
+  "id": "bot-chat-settings",
+  "version": "1.0.0",
+  "name": "Bot Chat",
+  "description": "Configure bot chat message settings",
+  "icon": "💬",
+  "scope": "both",
+  "sections": [
+    {
+      "id": "history",
+      "name": "History",
+      "icon": "📜",
+      "order": 1
+    }
+  ],
+  "settings": {
+    "historyLimit": {
+      "type": "number",
+      "default": 30,
+      "label": "History Limit",
+      "description": "Maximum number of messages to keep in history per guild",
+      "section": "history",
+      "order": 1,
+      "validation": {
+        "required": true,
+        "min": 5,
+        "max": 100,
+        "absoluteMin": 1
+      }
+    }
+  }
+}

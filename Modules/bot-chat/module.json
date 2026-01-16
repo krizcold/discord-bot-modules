@@ -1,0 +1,16 @@
+{
+  "name": "bot-chat",
+  "version": "1.0.0",
+  "displayName": "Bot Chat",
+  "description": "Send messages as the bot anonymously with history tracking",
+  "author": "kriz_cold",
+  "category": "moderation",
+  "requiredIntents": ["Guilds", "GuildMessages"],
+  "requiredPermissions": ["ManageMessages"],
+  "dependencies": {
+    "required": {},
+    "optional": {}
+  },
+  "enabled": true,
+  "exports": {}
+}

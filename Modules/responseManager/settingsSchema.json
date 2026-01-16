@@ -1,0 +1,194 @@
+{
+  "id": "response-manager-settings",
+  "version": "1.0.0",
+  "name": "Response Manager",
+  "description": "Configure automatic message response settings",
+  "icon": "💬",
+  "scope": "both",
+
+  "sections": [
+    {
+      "id": "limits",
+      "name": "Limits",
+      "description": "Configure resource limits for response groups",
+      "icon": "📊",
+      "order": 1
+    },
+    {
+      "id": "history",
+      "name": "History",
+      "description": "Configure response history tracking",
+      "icon": "📜",
+      "order": 2
+    },
+    {
+      "id": "behavior",
+      "name": "Behavior",
+      "description": "Configure default behavior for new groups",
+      "icon": "⚙️",
+      "order": 3
+    }
+  ],
+
+  "settings": {
+    "maxGroups": {
+      "type": "number",
+      "default": 50,
+      "label": "Maximum Groups",
+      "description": "Maximum number of response groups per guild",
+      "section": "limits",
+      "order": 1,
+      "validation": {
+        "required": true,
+        "min": 1,
+        "max": 200,
+        "absoluteMin": 1
+      }
+    },
+    "maxResponseLength": {
+      "type": "number",
+      "default": 10000,
+      "label": "Max Response Length",
+      "description": "Maximum total characters for all responses combined per group",
+      "section": "limits",
+      "order": 2,
+      "validation": {
+        "required": true,
+        "min": 100,
+        "max": 50000,
+        "absoluteMin": 1
+      }
+    },
+    "maxPatternsPerGroup": {
+      "type": "number",
+      "default": 10,
+      "label": "Max Patterns Per Group",
+      "description": "Maximum number of trigger patterns allowed per group",
+      "section": "limits",
+      "order": 3,
+      "validation": {
+        "required": true,
+        "min": 1,
+        "max": 50,
+        "absoluteMin": 1
+      }
+    },
+    "maxResponsesPerGroup": {
+      "type": "number",
+      "default": 20,
+      "label": "Max Responses Per Group",
+      "description": "Maximum number of responses allowed per group",
+      "section": "limits",
+      "order": 4,
+      "validation": {
+        "required": true,
+        "min": 1,
+        "max": 100,
+        "absoluteMin": 1
+      }
+    },
+    "maxPatternLength": {
+      "type": "number",
+      "default": 500,
+      "label": "Max Pattern Length",
+      "description": "Maximum characters per trigger pattern",
+      "section": "limits",
+      "order": 5,
+      "validation": {
+        "min": 10,
+        "max": 2000
+      }
+    },
+    "maxVariablesPerGroup": {
+      "type": "number",
+      "default": 10,
+      "label": "Max Variables Per Group",
+      "description": "Maximum number of custom variables per group",
+      "section": "limits",
+      "order": 6,
+      "validation": {
+        "min": 0,
+        "max": 50
+      }
+    },
+    "maxEmbedFieldsPerResponse": {
+      "type": "number",
+      "default": 25,
+      "label": "Max Embed Fields",
+      "description": "Maximum embed fields per response (Discord limit: 25)",
+      "section": "limits",
+      "order": 7,
+      "validation": {
+        "min": 1,
+        "max": 25,
+        "absoluteMax": 25
+      }
+    },
+    "maxAttachmentsPerResponse": {
+      "type": "number",
+      "default": 5,
+      "label": "Max Attachments",
+      "description": "Maximum file attachments per response",
+      "section": "limits",
+      "order": 8,
+      "validation": {
+        "min": 0,
+        "max": 10
+      }
+    },
+    "maxHistoryEntries": {
+      "type": "number",
+      "default": 10,
+      "label": "History Entries",
+      "description": "Number of response history entries to keep per guild",
+      "section": "history",
+      "order": 1,
+      "validation": {
+        "required": true,
+        "min": 0,
+        "max": 100
+      }
+    },
+    "trackHistoryByDefault": {
+      "type": "boolean",
+      "default": true,
+      "label": "Track History by Default",
+      "description": "Enable history tracking for new groups by default",
+      "section": "history",
+      "order": 2
+    },
+    "defaultCooldownMs": {
+      "type": "number",
+      "default": 0,
+      "label": "Default Cooldown (ms)",
+      "description": "Default cooldown in milliseconds for new groups (0 = no cooldown)",
+      "section": "behavior",
+      "order": 1,
+      "validation": {
+        "min": 0,
+        "max": 3600000
+      },
+      "placeholder": "0"
+    },
+    "defaultSelectionMode": {
+      "type": "select",
+      "default": "random",
+      "label": "Default Selection Mode",
+      "description": "How responses are selected when multiple are configured",
+      "section": "behavior",
+      "order": 2,
+      "options": [
+        {
+          "value": "random",
+          "label": "Random",
+          "description": "Pick a random response each time"
+        },
+        {
+          "value": "sequential",
+          "label": "Sequential",
+          "description": "Cycle through responses in order"
+        }
+      ]
+    }
+  }
+}

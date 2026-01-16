@@ -1,0 +1,58 @@
+{
+  "name": "response-manager",
+  "version": "1.0.0",
+  "displayName": "Response Manager",
+  "description": "Automatic message responses with reactions, replies, or command triggers",
+  "author": "kriz_cold",
+  "category": "misc",
+  "requiredIntents": ["Guilds", "GuildMessages", "MessageContent"],
+  "requiredPermissions": ["SendMessages", "AddReactions", "ManageMessages"],
+  "dependencies": {
+    "required": {},
+    "optional": {}
+  },
+  "configSchema": {
+    "id": "response-manager-config.json",
+    "name": "Response Manager Config",
+    "description": "Configuration for the response manager module",
+    "properties": {
+      "maxGroups": {
+        "type": "number",
+        "default": 50,
+        "description": "Maximum number of response groups per guild"
+      },
+      "maxResponseLength": {
+        "type": "number",
+        "default": 10000,
+        "description": "Maximum total characters for all responses combined per group"
+      },
+      "maxHistoryEntries": {
+        "type": "number",
+        "default": 10,
+        "description": "Maximum number of response history entries to keep per guild"
+      }
+    }
+  },
+  "dataSchema": {
+    "files": [
+      {
+        "id": "groups.json",
+        "name": "Response Groups",
+        "description": "Stores response group configurations with triggers and responses",
+        "required": true,
+        "scope": "guild",
+        "template": { "groups": [] }
+      },
+      {
+        "id": "history.json",
+        "name": "Response History",
+        "description": "Tracks recent bot responses for reply-based trigger lookups",
+        "required": false,
+        "scope": "guild",
+        "template": { "entries": [] }
+      }
+    ]
+  },
+  "enabled": true,
+  "exports": {}
+}

@@ -1,0 +1,38 @@
+{
+  "name": "scheduled",
+  "version": "1.0.0",
+  "displayName": "Scheduled Messages",
+  "description": "User reminders and scheduled message system",
+  "author": "kriz_cold",
+  "category": "misc",
+  "requiredIntents": ["Guilds", "GuildMessages"],
+  "requiredPermissions": ["SendMessages", "ManageMessages"],
+  "dependencies": {
+    "required": {},
+    "optional": {
+      "timestamp": "^1.0.0"
+    }
+  },
+  "dataSchema": {
+    "files": [
+      {
+        "id": "reminders.json",
+        "name": "User Reminders",
+        "description": "Stores active user reminders",
+        "required": true,
+        "scope": "guild",
+        "template": { "reminders": [] }
+      },
+      {
+        "id": "groups.json",
+        "name": "Scheduled Message Groups",
+        "description": "Stores scheduled message group configurations",
+        "required": true,
+        "scope": "guild",
+        "template": { "groups": [] }
+      }
+    ]
+  },
+  "enabled": true,
+  "exports": {}
+}

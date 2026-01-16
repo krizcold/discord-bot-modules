@@ -1,0 +1,98 @@
+{
+  "name": "giveaway",
+  "version": "1.0.0",
+  "displayName": "Giveaway System",
+  "description": "Advanced giveaway management with multiple entry modes (reaction, button, trivia)",
+  "author": "kriz_cold",
+  "category": "fun",
+  "requiredIntents": ["Guilds", "GuildMembers", "GuildMessageReactions"],
+  "requiredPermissions": ["ManageMessages"],
+  "dependencies": {
+    "required": {},
+    "optional": {}
+  },
+  "configSchema": {
+    "id": "giveaway-config.json",
+    "name": "Giveaway System Config",
+    "description": "Configuration for the giveaway management system",
+    "properties": {
+      "itemsPerPage": {
+        "type": "number",
+        "default": 8,
+        "description": "Number of giveaways to display per page in list view (max 8)"
+      },
+      "nameDisplayCap": {
+        "type": "number",
+        "default": 25,
+        "description": "Maximum character length for giveaway names in list view (longer names are truncated)"
+      },
+      "colors.createPanel": {
+        "type": "string",
+        "default": "0x5865F2",
+        "description": "Hex color code for create giveaway panel embeds (Discord Blurple)"
+      },
+      "colors.listPanel": {
+        "type": "string",
+        "default": "0x1ABC9C",
+        "description": "Hex color code for list giveaways panel embeds (Teal)"
+      },
+      "colors.mainPanel": {
+        "type": "string",
+        "default": "0x5865F2",
+        "description": "Hex color code for main giveaway panel embeds (Discord Blurple)"
+      },
+      "colors.detailPanelActive": {
+        "type": "string",
+        "default": "0x2ECC71",
+        "description": "Hex color code for active giveaway detail panel embeds (Green)"
+      },
+      "colors.detailPanelEnded": {
+        "type": "string",
+        "default": "0xF39C12",
+        "description": "Hex color code for ended giveaway detail panel embeds (Orange)"
+      },
+      "colors.detailPanelCancelled": {
+        "type": "string",
+        "default": "0xE91E63",
+        "description": "Hex color code for cancelled giveaway detail panel embeds (Red/Pink)"
+      },
+      "colors.activeGiveaway": {
+        "type": "string",
+        "default": "0x2ECC71",
+        "description": "Hex color code for active giveaway announcement embeds (Green)"
+      },
+      "labels.enterButton": {
+        "type": "string",
+        "default": "🎉 Enter Giveaway",
+        "description": "Button label for entering button-mode giveaways"
+      },
+      "labels.triviaButton": {
+        "type": "string",
+        "default": "✏️ Answer Trivia",
+        "description": "Button label for answering trivia-mode giveaways"
+      }
+    }
+  },
+  "dataSchema": {
+    "files": [
+      {
+        "id": "giveaways.json",
+        "name": "Giveaway Data",
+        "description": "Stores active and past giveaways including participants, winners, and settings",
+        "required": true,
+        "scope": "guild",
+        "template": []
+      },
+      {
+        "id": "userGiveawayData.json",
+        "name": "User Participation Data",
+        "description": "Tracks user participation history and cooldowns for giveaways",
+        "required": false,
+        "scope": "guild",
+        "template": {}
+      }
+    ]
+  },
+  "enabled": true,
+  "exports": {}
+}

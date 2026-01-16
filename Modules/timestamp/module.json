@@ -1,0 +1,35 @@
+{
+  "name": "timestamp",
+  "version": "1.0.0",
+  "displayName": "Timestamp Generator",
+  "description": "Generate Discord timestamps with timezone support and chat activation",
+  "author": "kriz_cold",
+  "category": "misc",
+  "requiredIntents": ["Guilds"],
+  "requiredPermissions": [],
+  "dependencies": {
+    "required": {},
+    "optional": {}
+  },
+  "config": {},
+  "configSchema": {
+    "id": "timestamp-config.json",
+    "name": "Timestamp Module Config",
+    "description": "Configuration for timestamp generator",
+    "properties": {}
+  },
+  "dataSchema": {
+    "files": [
+      {
+        "id": "userPrefs.json",
+        "name": "User Timestamp Preferences",
+        "description": "Stores user timezone preferences (UTC offset, minute modifier, default format)",
+        "required": false,
+        "scope": "global",
+        "template": {}
+      }
+    ]
+  },
+  "enabled": true,
+  "exports": {}
+}

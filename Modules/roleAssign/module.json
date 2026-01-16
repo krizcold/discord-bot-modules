@@ -1,0 +1,28 @@
+{
+  "name": "role-assign",
+  "version": "1.0.0",
+  "displayName": "Role Assignment System",
+  "description": "Self-service role assignment via buttons or reactions",
+  "author": "kriz_cold",
+  "category": "moderation",
+  "requiredIntents": ["Guilds", "GuildMembers", "GuildMessageReactions", "GuildEmojisAndStickers"],
+  "requiredPermissions": ["ManageRoles"],
+  "dependencies": {
+    "required": {},
+    "optional": {}
+  },
+  "dataSchema": {
+    "files": [
+      {
+        "id": "role-groups.json",
+        "name": "Role Assignment Groups",
+        "description": "Stores role assignment group configurations",
+        "required": true,
+        "scope": "guild",
+        "template": []
+      }
+    ]
+  },
+  "enabled": true,
+  "exports": {}
+}

@@ -1,0 +1,154 @@
+{
+  "id": "halloffame-settings",
+  "version": "1.0.0",
+  "name": "Hall of Fame",
+  "description": "Configure Hall of Fame display, colors, and default board settings",
+  "icon": "⭐",
+  "scope": "guild",
+
+  "sections": [
+    {
+      "id": "display",
+      "name": "Display",
+      "description": "Configure list view and display options",
+      "icon": "📋",
+      "order": 1
+    },
+    {
+      "id": "defaults",
+      "name": "Board Defaults",
+      "description": "Default values for new boards",
+      "icon": "⚙️",
+      "order": 2
+    },
+    {
+      "id": "colors",
+      "name": "Colors",
+      "description": "Customize panel colors",
+      "icon": "🎨",
+      "order": 3
+    }
+  ],
+
+  "settings": {
+    "itemsPerPage": {
+      "type": "number",
+      "default": 8,
+      "label": "Boards Per Page",
+      "description": "Number of boards to display per page in list view",
+      "section": "display",
+      "order": 1,
+      "validation": {
+        "required": true,
+        "min": 1,
+        "max": 10,
+        "absoluteMin": 1
+      }
+    },
+    "nameDisplayCap": {
+      "type": "number",
+      "default": 25,
+      "label": "Name Display Cap",
+      "description": "Maximum characters for board names before truncation",
+      "section": "display",
+      "order": 2,
+      "validation": {
+        "required": true,
+        "min": 10,
+        "max": 50,
+        "absoluteMin": 1
+      }
+    },
+    "defaultMinReactions": {
+      "type": "number",
+      "default": 3,
+      "label": "Default Min Reactions",
+      "description": "Default minimum reactions for new boards",
+      "section": "defaults",
+      "order": 1,
+      "validation": {
+        "required": true,
+        "min": 1,
+        "max": 100,
+        "absoluteMin": 1
+      }
+    },
+    "defaultRemovalThreshold": {
+      "type": "number",
+      "default": 0,
+      "label": "Default Removal Threshold",
+      "description": "Default removal threshold for new boards (0 = never remove)",
+      "section": "defaults",
+      "order": 2,
+      "validation": {
+        "required": true,
+        "min": 0,
+        "max": 99
+      }
+    },
+    "defaultEmbedColor": {
+      "type": "color",
+      "default": "0xFFD700",
+      "label": "Default Embed Color",
+      "description": "Default color for featured message embeds",
+      "section": "defaults",
+      "order": 3
+    },
+    "defaultAllowSelfReact": {
+      "type": "boolean",
+      "default": false,
+      "label": "Default Allow Self React",
+      "description": "Default setting for allowing users to react to their own messages",
+      "section": "defaults",
+      "order": 4
+    },
+    "defaultAutoReact": {
+      "type": "boolean",
+      "default": true,
+      "label": "Default Auto React",
+      "description": "Default setting for bot auto-reacting on featured posts",
+      "section": "defaults",
+      "order": 5
+    },
+    "defaultSyncEdits": {
+      "type": "boolean",
+      "default": true,
+      "label": "Default Sync Edits",
+      "description": "Default setting for syncing edits to featured messages",
+      "section": "defaults",
+      "order": 6
+    },
+    "defaultSyncDeletes": {
+      "type": "boolean",
+      "default": true,
+      "label": "Default Sync Deletes",
+      "description": "Default setting for handling original message deletions",
+      "section": "defaults",
+      "order": 7
+    },
+    "colorMainPanel": {
+      "type": "color",
+      "default": "0x5865F2",
+      "label": "Main Panel Color",
+      "description": "Color for the main board list panel",
+      "section": "colors",
+      "order": 1
+    },
+    "colorCreatePanel": {
+      "type": "color",
+      "default": "0xF39C12",
+      "label": "Create Panel Color",
+      "description": "Color for the create/edit board panel",
+      "section": "colors",
+      "order": 2
+    },
+    "colorDetailPanel": {
+      "type": "color",
+      "default": "0x2ECC71",
+      "label": "Detail Panel Color",
+      "description": "Color for the board detail panel",
+      "section": "colors",
+      "order": 3
+    }
+  }
+}

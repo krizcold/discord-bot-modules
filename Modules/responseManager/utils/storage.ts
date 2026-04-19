@@ -6,10 +6,8 @@ import { loadModuleData, saveModuleData } from '@internal/utils/dataManager';
 import { getMergedConfig } from '@internal/utils/configManager';
 import {
   ResponseGroup,
-  ResponseItem,
   ResponseManagerStorage,
   createDefaultStorage,
-  createDefaultGroup,
 } from '../types/responseManager';
 import { DEFAULT_MAX_GROUPS } from '../panels/constants';
 
@@ -26,49 +24,15 @@ function getMaxGroups(guildId: string): number {
 }
 
 /**
- * Migrate old string[] responses to ResponseItem[] format
- */
-function migrateResponses(responses: any[]): ResponseItem[] {
-  if (!responses || responses.length === 0) return [];
-
-  // Check if already migrated (first item is an object with 'value' property)
-  if (typeof responses[0] === 'object' && 'value' in responses[0]) {
-    return responses as ResponseItem[];
-  }
-
-  // Migrate from string[] to ResponseItem[]
-  return responses.map((r: string) => ({
-    value: r,
-    displayValue: r, // For old data, value and display are the same
-  }));
-}
-
-/**
  * Load response groups for a guild
  */
 export function loadGroups(guildId: string): ResponseManagerStorage {
-  const storage = loadModuleData<ResponseManagerStorage>(
+  return loadModuleData<ResponseManagerStorage>(
     STORAGE_FILE,
     guildId,
     MODULE_NAME,
     createDefaultStorage()
   );
-
-  // Migrate old data format if needed
-  let needsSave = false;
-  for (const group of storage.groups) {
-    const migratedResponses = migrateResponses(group.responses as any);
-    if (migratedResponses !== group.responses) {
-      group.responses = migratedResponses;
-      needsSave = true;
-    }
-  }
-
-  if (needsSave) {
-    saveModuleData(STORAGE_FILE, guildId, MODULE_NAME, storage);
-  }
-
-  return storage;
 }
 
 /**

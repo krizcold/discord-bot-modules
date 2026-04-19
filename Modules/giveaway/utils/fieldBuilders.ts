@@ -237,27 +237,26 @@ export function buildWinnersDisplayField(giveaway: Giveaway, inline = false): Em
  */
 export function buildModeSpecificFields(
   data: Giveaway | StoredPendingGiveaway,
-  options: { showAnswer?: boolean; inline?: boolean } = {}
+  options: { showAnswer?: boolean } = {}
 ): EmbedField[] {
   const fields: EmbedField[] = [];
   const entryMode = data.entryMode;
-  const inline = options.inline ?? true; // Default to true for backward compatibility
 
   if (entryMode === 'reaction') {
-    const emojiField = buildReactionEmojiField(data.reactionDisplayEmoji, inline);
+    const emojiField = buildReactionEmojiField(data.reactionDisplayEmoji, true);
     if (emojiField) fields.push(emojiField);
   }
 
   if (entryMode === 'trivia' || entryMode === 'competition') {
-    const questionField = buildTriviaQuestionField(data.triviaQuestion, inline);
+    const questionField = buildTriviaQuestionField(data.triviaQuestion, true);
     if (questionField) fields.push(questionField);
 
     if (options.showAnswer && 'triviaAnswer' in data) {
-      const answerField = buildTriviaAnswerField(data.triviaAnswer, inline);
+      const answerField = buildTriviaAnswerField(data.triviaAnswer, true);
       if (answerField) fields.push(answerField);
     }
 
-    const attemptsField = buildMaxAttemptsField(data.maxTriviaAttempts, inline);
+    const attemptsField = buildMaxAttemptsField(data.maxTriviaAttempts, true);
     if (attemptsField) fields.push(attemptsField);
   }
 

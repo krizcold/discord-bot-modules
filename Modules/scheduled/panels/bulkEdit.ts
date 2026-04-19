@@ -68,7 +68,9 @@ interface BulkEditPanelData {
 }
 
 /**
- * Get group ID and source from context - checks context.data first, then falls back to page state
+ * Get group ID and source from context.
+ * Preferred path: context.data (set by button navigation).
+ * Fallback: page state written by list.ts as a backup when button nav isn't enough.
  */
 function getGroupIdFromContext(context: PanelContext): { groupId: string | undefined; isNew: boolean; source: 'list' | 'messages' } {
   const panelData = context.data as BulkEditPanelData | undefined;
@@ -78,13 +80,13 @@ function getGroupIdFromContext(context: PanelContext): { groupId: string | undef
     return { groupId: panelData.groupId, isNew: panelData.isNew ?? false, source: panelData.source ?? 'list' };
   }
 
-  // Fall back to page state (for backwards compatibility)
+  // Fall back to page state (set as backup by list.ts)
   const guildId = context.guildId!;
   const userId = context.userId;
   const editingId = getEditingGroupId(guildId, userId);
 
   if (editingId) {
-    // If we got here via page state, assume came from messages (legacy behavior)
+    // Reached via page state backup — treat as messages source
     return { groupId: editingId, isNew: false, source: 'messages' };
   }
 
@@ -260,22 +262,14 @@ const bulkEditPanel: PanelOptions = {
     // Pattern 1: Back button with source and group ID (e.g., "back_list_grp_xxx" or "back_messages_new")
     if (buttonId.startsWith(`${BTN.BACK}_`)) {
       const suffix = buttonId.replace(`${BTN.BACK}_`, '');
-      // Parse source first (list or messages)
       if (suffix.startsWith('list_')) {
         source = 'list';
-        const dataKeyPart = suffix.replace('list_', '');
-        const parsed = parseDataKey(dataKeyPart);
+        const parsed = parseDataKey(suffix.replace('list_', ''));
         groupId = parsed.groupId;
         isNew = parsed.isNew;
       } else if (suffix.startsWith('messages_')) {
         source = 'messages';
-        const dataKeyPart = suffix.replace('messages_', '');
-        const parsed = parseDataKey(dataKeyPart);
-        groupId = parsed.groupId;
-        isNew = parsed.isNew;
-      } else {
-        // Legacy format without source - just groupId
-        const parsed = parseDataKey(suffix);
+        const parsed = parseDataKey(suffix.replace('messages_', ''));
         groupId = parsed.groupId;
         isNew = parsed.isNew;
       }

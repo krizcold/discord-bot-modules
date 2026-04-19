@@ -27,10 +27,9 @@ import {
 import { scheduleReminder } from '../manager/scheduler';
 
 const MODULE_NAME = 'scheduled';
-const CATEGORY = 'misc';
 
 function getSetting<T extends SettingValue>(key: string, guildId: string, defaultValue: T): T {
-  const value = getModuleSetting<T>(MODULE_NAME, key, guildId, CATEGORY);
+  const value = getModuleSetting<T>(MODULE_NAME, key, guildId);
   return value !== undefined ? value : defaultValue;
 }
 

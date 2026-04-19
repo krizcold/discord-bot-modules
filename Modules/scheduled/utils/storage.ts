@@ -15,13 +15,12 @@ import {
 } from '../types/scheduled';
 
 const MODULE_NAME = 'scheduled';
-const CATEGORY = 'misc';
 const REMINDERS_FILE = 'reminders.json';
 const GROUPS_FILE = 'groups.json';
 
 // Settings helper
 function getSetting<T extends SettingValue>(key: string, guildId: string, defaultValue: T): T {
-  const value = getModuleSetting<T>(MODULE_NAME, key, guildId, CATEGORY);
+  const value = getModuleSetting<T>(MODULE_NAME, key, guildId);
   return value !== undefined ? value : defaultValue;
 }
 

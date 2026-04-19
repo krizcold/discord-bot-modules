@@ -3,12 +3,11 @@ import { getModuleSetting } from '@internal/utils/settings/settingsStorage';
 import { SentMessageRecord, BotChatHistory } from '../types/botChat';
 
 const MODULE_NAME = 'bot-chat';
-const MODULE_CATEGORY = 'moderation';
 const HISTORY_FILE = 'history.json';
 const DEFAULT_HISTORY_LIMIT = 30;
 
 function getHistoryLimit(guildId: string): number {
-  const limit = getModuleSetting<number>(MODULE_NAME, 'historyLimit', guildId, MODULE_CATEGORY);
+  const limit = getModuleSetting<number>(MODULE_NAME, 'historyLimit', guildId);
   return limit ?? DEFAULT_HISTORY_LIMIT;
 }
 

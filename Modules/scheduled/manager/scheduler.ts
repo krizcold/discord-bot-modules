@@ -32,7 +32,6 @@ import {
 import { selectNextMessage } from './selection';
 
 const MODULE_NAME = 'scheduled';
-const CATEGORY = 'misc';
 
 // Active timers
 const reminderTimers = new Map<string, NodeJS.Timeout>();
@@ -42,7 +41,7 @@ const groupTimers = new Map<string, NodeJS.Timeout>();
 const MAX_TIMEOUT = 2147483647;
 
 function getSetting<T extends SettingValue>(key: string, guildId: string, defaultValue: T): T {
-  const value = getModuleSetting<T>(MODULE_NAME, key, guildId, CATEGORY);
+  const value = getModuleSetting<T>(MODULE_NAME, key, guildId);
   return value !== undefined ? value : defaultValue;
 }
 

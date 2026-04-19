@@ -6,7 +6,6 @@
 import { getModuleSetting } from '@internal/utils/settings/settingsStorage';
 
 const MODULE_NAME = 'halloffame';
-const CATEGORY = 'fun';
 
 /**
  * Interface for Hall of Fame configuration
@@ -71,22 +70,22 @@ export function parseColorString(colorStr: string): number {
  */
 export function getHofConfig(guildId: string | null): HallOfFameConfig {
   // Display settings
-  const itemsPerPage = getModuleSetting<number>(MODULE_NAME, 'itemsPerPage', guildId, CATEGORY) ?? 8;
-  const nameDisplayCap = getModuleSetting<number>(MODULE_NAME, 'nameDisplayCap', guildId, CATEGORY) ?? 25;
+  const itemsPerPage = getModuleSetting<number>(MODULE_NAME, 'itemsPerPage', guildId) ?? 8;
+  const nameDisplayCap = getModuleSetting<number>(MODULE_NAME, 'nameDisplayCap', guildId) ?? 25;
 
   // Default board values
-  const defaultMinReactions = getModuleSetting<number>(MODULE_NAME, 'defaultMinReactions', guildId, CATEGORY) ?? 3;
-  const defaultRemovalThreshold = getModuleSetting<number>(MODULE_NAME, 'defaultRemovalThreshold', guildId, CATEGORY) ?? 0;
-  const defaultEmbedColorStr = getModuleSetting<string>(MODULE_NAME, 'defaultEmbedColor', guildId, CATEGORY) ?? '0xFFD700';
-  const defaultAllowSelfReact = getModuleSetting<boolean>(MODULE_NAME, 'defaultAllowSelfReact', guildId, CATEGORY) ?? false;
-  const defaultAutoReact = getModuleSetting<boolean>(MODULE_NAME, 'defaultAutoReact', guildId, CATEGORY) ?? true;
-  const defaultSyncEdits = getModuleSetting<boolean>(MODULE_NAME, 'defaultSyncEdits', guildId, CATEGORY) ?? true;
-  const defaultSyncDeletes = getModuleSetting<boolean>(MODULE_NAME, 'defaultSyncDeletes', guildId, CATEGORY) ?? true;
+  const defaultMinReactions = getModuleSetting<number>(MODULE_NAME, 'defaultMinReactions', guildId) ?? 3;
+  const defaultRemovalThreshold = getModuleSetting<number>(MODULE_NAME, 'defaultRemovalThreshold', guildId) ?? 0;
+  const defaultEmbedColorStr = getModuleSetting<string>(MODULE_NAME, 'defaultEmbedColor', guildId) ?? '0xFFD700';
+  const defaultAllowSelfReact = getModuleSetting<boolean>(MODULE_NAME, 'defaultAllowSelfReact', guildId) ?? false;
+  const defaultAutoReact = getModuleSetting<boolean>(MODULE_NAME, 'defaultAutoReact', guildId) ?? true;
+  const defaultSyncEdits = getModuleSetting<boolean>(MODULE_NAME, 'defaultSyncEdits', guildId) ?? true;
+  const defaultSyncDeletes = getModuleSetting<boolean>(MODULE_NAME, 'defaultSyncDeletes', guildId) ?? true;
 
   // Panel colors
-  const colorMainPanelStr = getModuleSetting<string>(MODULE_NAME, 'colorMainPanel', guildId, CATEGORY) ?? '0x5865F2';
-  const colorCreatePanelStr = getModuleSetting<string>(MODULE_NAME, 'colorCreatePanel', guildId, CATEGORY) ?? '0xF39C12';
-  const colorDetailPanelStr = getModuleSetting<string>(MODULE_NAME, 'colorDetailPanel', guildId, CATEGORY) ?? '0x2ECC71';
+  const colorMainPanelStr = getModuleSetting<string>(MODULE_NAME, 'colorMainPanel', guildId) ?? '0x5865F2';
+  const colorCreatePanelStr = getModuleSetting<string>(MODULE_NAME, 'colorCreatePanel', guildId) ?? '0xF39C12';
+  const colorDetailPanelStr = getModuleSetting<string>(MODULE_NAME, 'colorDetailPanel', guildId) ?? '0x2ECC71';
 
   return {
     itemsPerPage,

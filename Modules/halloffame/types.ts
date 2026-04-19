@@ -67,27 +67,6 @@ export const STATIC_BOARD_DEFAULTS: Partial<Board> = {
 };
 
 /**
- * Default values for new boards (legacy - use getDefaultBoardValues for configurable values)
- * @deprecated Use getDefaultBoardValues() from configUtils for configurable defaults
- */
-export const DEFAULT_BOARD_VALUES: Partial<Board> = {
-  minReactions: 3,
-  removalThreshold: 0,
-  unfeaturedAction: 'delete',
-  allowSelfReact: false,
-  syncEdits: true,
-  syncDeletes: true,
-  autoReact: true,
-  excludedChannels: [],
-  embedColor: 0xFFD700, // Gold
-  enabled: true,
-  sourceChannelIds: [],
-  lockSourceEnabled: false,
-  lockSourceFormats: [],
-  lockDestinationEnabled: false,
-};
-
-/**
  * Currently featured message record
  */
 export interface FeaturedMessage {

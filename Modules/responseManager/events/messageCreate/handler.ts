@@ -10,7 +10,6 @@ import { findMatchingGroup } from '../../utils/patternParser';
 import { canTrigger, recordTrigger } from '../../utils/cooldownManager';
 import { createCommandProxy } from '../../utils/interactionProxy';
 import { recordResponse } from '../../utils/historyManager';
-import { getEmojiDisplay } from '@internal/utils/emojiHandler';
 import {
   usesHistoryVariables,
   usesReplyVariables,
@@ -47,8 +46,8 @@ function getNextResponse(group: ResponseGroup): { response: ResponseItem; newInd
 
 /**
  * Handle react response type
- * Responses are stored as validated identifiers (emoji ID or unicode)
- * Returns displayValue for history (shows emoji properly) with fallback lookup
+ * Responses are stored as validated identifiers (emoji ID or unicode).
+ * Returns displayValue for history (shows emoji properly).
  */
 async function handleReact(client: Client, message: Message, group: ResponseGroup): Promise<string | null> {
   const result = getNextResponse(group);
@@ -65,11 +64,7 @@ async function handleReact(client: Client, message: Message, group: ResponseGrou
     }
 
     // Return displayValue for history (e.g., "<:emoji:123>" or "🎉")
-    // If displayValue not stored (legacy data), look up emoji from cache
-    if (result.response.displayValue) {
-      return result.response.displayValue;
-    }
-    return getEmojiDisplay(result.response.value, client);
+    return result.response.displayValue ?? null;
   } catch (error) {
     console.error(`[ResponseManager] Failed to react with ${result.response.value}:`, error);
     return null;

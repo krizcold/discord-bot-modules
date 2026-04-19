@@ -4,7 +4,8 @@
 
 import { randomUUID } from 'crypto';
 import { loadModuleData, saveModuleData } from '@internal/utils/dataManager';
-import { Board, FeaturedMessage, FeatureHistoryEntry, DEFAULT_BOARD_VALUES } from '../../types';
+import { Board, FeaturedMessage, FeatureHistoryEntry, STATIC_BOARD_DEFAULTS } from '../../types';
+import { getDefaultBoardValues } from '../../utils/configUtils';
 import {
   boardsCache,
   boardsCacheLoaded,
@@ -93,6 +94,8 @@ export function createBoard(
   userId: string,
   data: Partial<Board>
 ): Board {
+  const configDefaults = getDefaultBoardValues(guildId);
+
   const board: Board = {
     id: randomUUID(),
     guildId,
@@ -100,20 +103,20 @@ export function createBoard(
     emojiIdentifier: data.emojiIdentifier || '',
     emojiDisplay: data.emojiDisplay || '',
     destinationChannelId: data.destinationChannelId || '',
-    sourceChannelIds: data.sourceChannelIds || DEFAULT_BOARD_VALUES.sourceChannelIds!,
-    minReactions: data.minReactions ?? DEFAULT_BOARD_VALUES.minReactions!,
-    removalThreshold: data.removalThreshold ?? DEFAULT_BOARD_VALUES.removalThreshold!,
-    unfeaturedAction: data.unfeaturedAction || DEFAULT_BOARD_VALUES.unfeaturedAction!,
-    allowSelfReact: data.allowSelfReact ?? DEFAULT_BOARD_VALUES.allowSelfReact!,
-    syncEdits: data.syncEdits ?? DEFAULT_BOARD_VALUES.syncEdits!,
-    syncDeletes: data.syncDeletes ?? DEFAULT_BOARD_VALUES.syncDeletes!,
-    autoReact: data.autoReact ?? DEFAULT_BOARD_VALUES.autoReact!,
-    excludedChannels: data.excludedChannels || DEFAULT_BOARD_VALUES.excludedChannels!,
-    embedColor: data.embedColor ?? DEFAULT_BOARD_VALUES.embedColor!,
-    lockSourceEnabled: data.lockSourceEnabled ?? DEFAULT_BOARD_VALUES.lockSourceEnabled!,
-    lockSourceFormats: data.lockSourceFormats || DEFAULT_BOARD_VALUES.lockSourceFormats!,
-    lockDestinationEnabled: data.lockDestinationEnabled ?? DEFAULT_BOARD_VALUES.lockDestinationEnabled!,
-    enabled: data.enabled ?? DEFAULT_BOARD_VALUES.enabled!,
+    sourceChannelIds: data.sourceChannelIds || STATIC_BOARD_DEFAULTS.sourceChannelIds!,
+    minReactions: data.minReactions ?? configDefaults.minReactions,
+    removalThreshold: data.removalThreshold ?? configDefaults.removalThreshold,
+    unfeaturedAction: data.unfeaturedAction || STATIC_BOARD_DEFAULTS.unfeaturedAction!,
+    allowSelfReact: data.allowSelfReact ?? configDefaults.allowSelfReact,
+    syncEdits: data.syncEdits ?? configDefaults.syncEdits,
+    syncDeletes: data.syncDeletes ?? configDefaults.syncDeletes,
+    autoReact: data.autoReact ?? configDefaults.autoReact,
+    excludedChannels: data.excludedChannels || STATIC_BOARD_DEFAULTS.excludedChannels!,
+    embedColor: data.embedColor ?? configDefaults.embedColor,
+    lockSourceEnabled: data.lockSourceEnabled ?? STATIC_BOARD_DEFAULTS.lockSourceEnabled!,
+    lockSourceFormats: data.lockSourceFormats || STATIC_BOARD_DEFAULTS.lockSourceFormats!,
+    lockDestinationEnabled: data.lockDestinationEnabled ?? STATIC_BOARD_DEFAULTS.lockDestinationEnabled!,
+    enabled: data.enabled ?? STATIC_BOARD_DEFAULTS.enabled!,
     createdAt: Date.now(),
     createdBy: userId,
   };

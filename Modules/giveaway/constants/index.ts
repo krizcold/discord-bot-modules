@@ -1,6 +1,6 @@
 /**
- * Giveaway Constants Module
- * Re-exports all constants for backward compatibility
+ * Giveaway Constants - barrel file
+ * Re-exports prefixes, builders, parsers, and config from sibling files.
  */
 
 // Prefixes (button IDs, modal IDs, panel prefixes)

@@ -269,12 +269,12 @@ const roleAssignPanel: PanelOptions = {
         const isTextMode = newMode === 'text-only';
 
         if (wasTextMode && !isTextMode) {
-          // Switching FROM text-only TO embed: migrate textContent → embedDescription
+          // Switching FROM text-only TO embed: carry the typed text over so the user doesn't lose it
           if (current.textContent && !current.embedDescription) {
             updates.embedDescription = current.textContent;
           }
         } else if (!wasTextMode && isTextMode) {
-          // Switching TO text-only FROM embed: migrate embedDescription → textContent
+          // Switching TO text-only FROM embed: carry the embed description over
           if (current.embedDescription && !current.textContent) {
             updates.textContent = current.embedDescription;
           }
